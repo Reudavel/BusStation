@@ -1,0 +1,8 @@
+A Google Maps mashup with real-time bus, subway, commuter rail and
+ferry information from the MBTA.
+
+Visit https://joeshaw.org/mbta-bus to see it in action.
+
+This was once a standalone project but now is pulled into my blog via
+git submodules.
+
