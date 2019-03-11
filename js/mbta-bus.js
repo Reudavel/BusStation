@@ -79,6 +79,7 @@ const app = new Vue({
                 .then(json => {
                     this.stops = json.data;
                 });
+                /*https://api-v3.mbta.com/shapes?api_key=5e5bb76ad00f4a608cf6cf70ccd8e12d&filter[route]=Green-B */
             fetch("https://api-v3.mbta.com/shapes?" + this.mbtaKeyParams + "&filter[route]=" + this.selectedRoute.id)
                 .then(response => response.json())
                 .then(json => {
