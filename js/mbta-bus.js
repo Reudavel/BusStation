@@ -72,6 +72,8 @@ const app = new Vue({
             if (this.selectedRoute === null) {
                 return;
             }
+            /*fetch("http://localhost/BusStation/js/routes.js" + this.mbtaKeyParams + "&filter[route]=" + this.selectedRoute.id)*/
+            
             fetch("https://api-v3.mbta.com/stops?" + this.mbtaKeyParams + "&filter[route]=" + this.selectedRoute.id)
                 .then(response => response.json())
                 .then(json => {
@@ -211,7 +213,7 @@ const app = new Vue({
         },
     },
     created () {
-        fetch("https://api-v3.mbta.com/routes?" + this.mbtaKeyParams)
+        fetch("http://localhost/BusStation/js/routes.js") /*Racuerda que tienes que modificar los permisos de apache en el .config <Directory> Header set sae de los permisos "*" */
             .then(response => response.json())
             .then(json => {
                 this.routes = json.data;
