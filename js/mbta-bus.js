@@ -214,7 +214,7 @@ const app = new Vue({
         },
     },
     created () {
-        fetch("http://localhost/BusStation/js/routes.js") /*Racuerda que tienes que modificar los permisos de apache en el .config <Directory> Header set sae de los permisos "*" */
+        fetch("http://localhost/BusStation/data/routes.js") /*Racuerda que tienes que modificar los permisos de apache en el .config <Directory> Header set sae de los permisos "*" */
             .then(response => response.json())
             .then(json => {
                 this.routes = json.data;
