@@ -9,7 +9,8 @@ if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('
 
 Vue.use(VueGoogleMaps, {
     load: {
-        key: 'AIzaSyBuDLNN2zftYHZtrxnAwOcVYUF0zgJQukU',
+        /*key: 'AIzaSyBuDLNN2zftYHZtrxnAwOcVYUF0zgJQukU',*/
+        key: "",
         libraries: "geometry",
     },
 });
@@ -169,6 +170,7 @@ const app = new Vue({
 
         openInfoWindowStop: function(stop) {
             this.infoWindowOpen = false;
+            /*fetch("https://api-v3.mbta.com/predictions?" + this.mbtaKeyParams + "&filter[stop]=" + stop.id)*/
             fetch("https://api-v3.mbta.com/predictions?" + this.mbtaKeyParams + "&filter[stop]=" + stop.id)
                 .then(response => response.json())
                 .then(json => {
