@@ -6,7 +6,7 @@ if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('
     style = "width: 100%; height: 600px;";
     gestureHandling = "greedy";
 }
-
+/**Trabaando con la Red Line id=Red */
 Vue.use(VueGoogleMaps, {
     load: {
         /*key: 'AIzaSyBuDLNN2zftYHZtrxnAwOcVYUF0zgJQukU',*/
@@ -73,15 +73,18 @@ const app = new Vue({
             if (this.selectedRoute === null) {
                 return;
             }
-            /*fetch("http://localhost/BusStation/js/routes.js" + this.mbtaKeyParams + "&filter[route]=" + this.selectedRoute.id)*/
-            
-            fetch("https://api-v3.mbta.com/stops?" + this.mbtaKeyParams + "&filter[route]=" + this.selectedRoute.id)
+            /*fetch("http://localhost/BusStation/data/stops.js" + this.mbtaKeyParams + "&filter[route]=" + this.selectedRoute.id)*/
+            /*"https://api-v3.mbta.com/stops?" + this.mbtaKeyParams + "&filter[route]=" + this.selectedRoute.id*/
+            /*https://api-v3.mbta.com/stops?api_key=5e5bb76ad00f4a608cf6cf70ccd8e12d&filter[route]=Red*/
+            fetch("http://localhost/BusStation/data/stops.js")
                 .then(response => response.json())
                 .then(json => {
                     this.stops = json.data;
                 });
-                /*https://api-v3.mbta.com/shapes?api_key=5e5bb76ad00f4a608cf6cf70ccd8e12d&filter[route]=Green-B */
-            fetch("https://api-v3.mbta.com/shapes?" + this.mbtaKeyParams + "&filter[route]=" + this.selectedRoute.id)
+                /*http://localhost/BusStation/data/shapes.js*/
+                /*https://api-v3.mbta.com/shapes?api_key=5e5bb76ad00f4a608cf6cf70ccd8e12d&filter[route]=Red */
+                /*"https://api-v3.mbta.com/shapes?" + this.mbtaKeyParams + "&filter[route]=" + this.selectedRoute.id*/
+            fetch("http://localhost/BusStation/data/shapes.js")
                 .then(response => response.json())
                 .then(json => {
                     this.shapes = json.data;
@@ -170,8 +173,10 @@ const app = new Vue({
 
         openInfoWindowStop: function(stop) {
             this.infoWindowOpen = false;
+            /*http://localhost/BusStation/data/predictions.js*/
+            /*https://api-v3.mbta.com/shapes?api_key=5e5bb76ad00f4a608cf6cf70ccd8e12d&filter[stop]=place-alfcl*/
             /*fetch("https://api-v3.mbta.com/predictions?" + this.mbtaKeyParams + "&filter[stop]=" + stop.id)*/
-            fetch("https://api-v3.mbta.com/predictions?" + this.mbtaKeyParams + "&filter[stop]=" + stop.id)
+            fetch("http://localhost/BusStation/data/predictions.js")
                 .then(response => response.json())
                 .then(json => {
                     this.infoOptions.pixelOffset.height = -10;
@@ -215,6 +220,8 @@ const app = new Vue({
             return params;
         },
     },
+
+    /*http://localhost/BusStation/data/routes.js */
     created () {
         fetch("http://localhost/BusStation/data/routes.js") /*Racuerda que tienes que modificar los permisos de apache en el .config <Directory> Header set sae de los permisos "*" */
             .then(response => response.json())
