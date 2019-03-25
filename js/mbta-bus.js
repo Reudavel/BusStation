@@ -6,7 +6,7 @@ if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('
     style = "width: 100%; height: 600px;";
     gestureHandling = "greedy";
 }
-/**Trabaando con la Red Line id=Red */
+/**Trabajando con la Red Line id=Red */
 Vue.use(VueGoogleMaps, {
     load: {
         /*key: 'AIzaSyBuDLNN2zftYHZtrxnAwOcVYUF0zgJQukU',*/
